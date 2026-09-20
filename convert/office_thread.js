@@ -18,13 +18,15 @@ function start() {
     if (e.data.cmd !== 'convert') throw Error('Unknown message command: ' + e.data.cmd);
     const { id, name, from, to } = e.data;
     try {
-      // Close the previous document before opening the next one.
-      if (xModel !== undefined && xModel.queryInterface(zetajs.type.interface(css.util.XCloseable))) {
-        xModel.close(false);
-        xModel = undefined;
+      // Close the previous document before opening the next one. A failed open leaves nothing behind.
+      const previous = xModel;
+      xModel = undefined;
+      if (previous && previous.queryInterface(zetajs.type.interface(css.util.XCloseable))) {
+        previous.close(false);
       }
-      xModel = zHT.desktop.loadComponentFromURL('file://' + from, '_blank', 0, [beanHidden]);
-      if (!xModel) throw Error('The file could not be opened.');
+      const opened = zHT.desktop.loadComponentFromURL('file://' + from, '_blank', 0, [beanHidden]);
+      if (!opened) throw Error('The file could not be opened.');
+      xModel = opened;
       xModel.storeToURL('file://' + to, [beanOverwrite, beanPdf]);
       zetajs.mainPort.postMessage({ cmd: 'converted', id, name, from, to });
     } catch (err) {
