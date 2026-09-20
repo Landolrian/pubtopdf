@@ -188,7 +188,17 @@ function downloadZip() {
 
 function startEngine() {
   setEngine('loading', 'Starting the converter. The first visit downloads about 50 MB, so it can take a minute. After that it loads much faster.');
-  zHM = new ZetaHelperMain('office_thread.js', { threadJsType: 'module' });
+  try {
+    zHM = new ZetaHelperMain('office_thread.js', { threadJsType: 'module' });
+  } catch (err) {
+    setEngine('error', 'The converter could not start: ' + (err && err.message ? err.message : err));
+    return;
+  }
+  setTimeout(() => {
+    if (!engineReady && engineEl.dataset.state === 'loading') {
+      setEngine('error', 'The converter is taking too long to start. Check your connection, then reload this page.');
+    }
+  }, 4 * 60 * 1000);
   zHM.start(() => {
     zHM.thrPort.onmessage = (e) => {
       switch (e.data.cmd) {
