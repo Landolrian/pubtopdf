@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convert PUB to PDF: Free, Private, No Upload | PubToPDF</title>
+<meta name="description" content="Convert Microsoft Publisher .pub files to PDF in your browser. Free, no sign-up, and your files never leave your device. Convert one file or a whole batch.">
+<meta property="og:title" content="Convert PUB to PDF: Free, Private, No Upload | PubToPDF">
+<meta property="og:description" content="Convert Microsoft Publisher .pub files to PDF in your browser. Free, no sign-up, and your files never leave your device. Convert one file or a whole batch.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PubToPDF">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.coi = { coepCredentialless: function () { return false; }, quiet: true };</script>
+<script src="coi-serviceworker.js"></script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2350d9"/><path d="M9 7h9l5 5v13a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z" fill="#fff" opacity=".95"/><path d="M18 7v5h5" fill="#c9d6ff"/><text x="15.5" y="22.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7.5" fill="#2350d9">PDF</text></svg><span>PubToPDF</span></a>
+    <nav class="nav" aria-label="Main"><a href="../convert/" aria-current="page">Convert</a><a href="../open-pub-file-on-chromebook/">Chromebook</a><a href="../open-pub-file-on-mac/">Mac</a><a href="../open-pub-file-on-iphone-android/">iPhone & Android</a><a href="../publisher-shutting-down/">Publisher ending</a></nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap narrow">
+  <div class="tool">
+    <h1>Convert PUB to PDF</h1>
+    <p class="lead">Add your Publisher files and get PDFs back. Everything happens on your device.</p>
+
+    <div class="engine" id="engine" data-state="loading" role="status" aria-live="polite"><span class="dot"></span><span id="engine-text">Setting things up…</span></div>
+
+    <label class="drop" id="drop">
+      <strong>Drop .pub files here</strong>
+      <span>or click to choose files. You can pick as many as you like.</span>
+      <input type="file" id="picker" multiple>
+    </label>
+    <p class="msg" id="msg" role="alert"></p>
+
+    <ul class="files" id="files" aria-live="polite"></ul>
+    <div class="toolbar" id="toolbar" hidden><button class="btn" id="zip-all" type="button">Download all PDFs (ZIP)</button></div>
+
+    <p class="privacy-line">Your files are converted inside this page and are never uploaded. Closing the page clears everything.</p>
+  </div>
+
+  <div class="article" style="padding-top:20px">
+    <h2>What to expect</h2>
+    <ul>
+      <li>Layout, colors, shapes and pictures usually carry over well.</li>
+      <li>If a font from the original file is missing, a similar one is used, so text can shift a little.</li>
+      <li>Effects like WordArt may not carry over. Check the PDF before you rely on it.</li>
+      <li>Very large files can take a minute or two each.</li>
+    </ul>
+    <h2>Need help?</h2>
+    <p>See how to open a .pub file <a href="../open-pub-file-on-chromebook/">on a Chromebook</a>, <a href="../open-pub-file-on-mac/">on a Mac</a>, or <a href="../open-pub-file-on-iphone-android/">on a phone</a>.</p>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="../convert/">Convert a .pub file</a>
+      <a href="../publisher-shutting-down/">Publisher is ending</a>
+      <a href="../privacy/">Privacy</a>
+    </div>
+    <p>PubToPDF is an independent service and is not affiliated with or endorsed by Microsoft. Microsoft and Publisher are trademarks of the Microsoft group of companies.</p>
+    <p>Conversion is powered by open-source LibreOffice technology.</p>
+  </div>
+</footer>
+</body>
+</html>
